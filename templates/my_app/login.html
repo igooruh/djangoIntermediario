@@ -1,0 +1,29 @@
+<!-- Criado na aula Criando Página de Login de Usuário -->
+    {% extends 'layout.html' %}
+
+    <!-- Sobrecrevendo o titulo da página -->
+    {% block title %}Login de Usuário{% endblock %}
+
+    {% block content %}
+
+        <div class = "container">
+            <h3>Login de Usuário</h3>
+            <form action = "/login/" method = "post">
+                {% csrf_token %}
+                <div id = "username" class = "form-group">
+                    <label for = "username">E-mail</label>
+                    <input type = "text" class = "form-control" name = "username" placeholder = "Enter with your e-mail">
+                </div>
+
+                <div id = "password" class = "form-group">
+                    <label for = "password">Password</label>
+                    <input type = "password" class = "form-control"  name = "password" placeholder = "password">
+                </div>
+
+                <div id = "button">
+                    <button class = "btn btn-primary">Enter</button>
+                </div>
+            </form>
+        </div>
+
+    {% endblock %}
