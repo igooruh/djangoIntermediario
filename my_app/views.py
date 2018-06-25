@@ -4,8 +4,12 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login as django_login, logout as django_logout
 from django.http import  HttpResponse, HttpResponseRedirect, HttpRequest
 
+# Decorators para proteger as páginas do sistema que precisa estar autenticadas para ser visualizada
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 # Criado na aula Criando Página de Login de Usuário
+
 def login (request : HttpRequest):
 
     if request.method == 'GET':
@@ -28,11 +32,22 @@ def login (request : HttpRequest):
     message = 'Credencial Inválida. Por favor tente novamente'
     return render (request, 'my_app/login.html', {'message' : message})
 
+
+    # if request.user.is_authenticated():
+    #
+    #     request.user.firsr_name
+    #     # Implementar aqui alguma lógica associada ao usuário
+
+
+# Os decorators abaixo servem para proteger as páginas, pois assim garatimos que não pessoas não autenticadas acessem a sistema
+# Por meio das URL's
+@login_required (login_url = '/login/')
 def logout (request):
 
     django_logout (request)
     return redirect ('/login/')
 
+@login_required (login_url = '/login/')
 def home (request):
 
     return render (request, 'my_app/home.html')

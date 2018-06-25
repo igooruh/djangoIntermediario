@@ -8,7 +8,12 @@
 </head>
 <body>
 
-    <h1>Intermediário</h1>
+    <!-- Recuperando o nome o usuário assim que ele loga -->
+    <h1>Intermediário
+        {% if request.user.is_authenticated %}
+            - olá {{ request.user.first_name }}
+        {% endif %}
+    </h1>
 
     {% block content %}
 
