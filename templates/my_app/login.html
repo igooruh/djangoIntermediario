@@ -8,6 +8,12 @@
 
         <div class = "container">
             <h3>Login de Usuário</h3>
+            <!-- Criando mensagem de alerta de login não autenticado -->
+            {% if message %}
+                <div class = "alert alert-warning">
+                    {{ message }}
+                </div>
+            {% endif %}
             <form action = "/login/" method = "post">
                 {% csrf_token %}
                 <div id = "username" class = "form-group">
