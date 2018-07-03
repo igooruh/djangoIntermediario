@@ -24,5 +24,6 @@ urlpatterns = [
     # Criado na aula Criando Página de Login de Usuário
     path ('login/', views.login),
     path ('logout/', views.logout),
-    path ('home/', views.home)
+    path ('home/', views.home),
+    path ('addresses/', views.address_list)
 ]

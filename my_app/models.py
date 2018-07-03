@@ -58,6 +58,11 @@ class Address (models.Model):
 
         verbose_name_plural = 'Adresses'
 
+    @property
+    def adress_complement_normalized (self):
+
+        return '' if self.address_complement is None else self.address_complement
+
 
     def __str__(self):
             return '%s, %s, %s' % (self.address, self.city, self.country)

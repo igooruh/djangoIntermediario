@@ -6,6 +6,7 @@ from django.http import  HttpResponse, HttpResponseRedirect, HttpRequest
 
 # Decorators para proteger as páginas do sistema que precisa estar autenticadas para ser visualizada
 from django.contrib.auth.decorators import login_required
+from .models import Address
 
 # Create your views here.
 # Criado na aula Criando Página de Login de Usuário
@@ -51,5 +52,12 @@ def logout (request):
 def home (request):
 
     return render (request, 'my_app/home.html')
+
+@login_required (login_url = '/login')
+def address_list (request):
+
+    # objects é gerenciador de objetos/URL
+    addresses = Address.objects.all ()
+    return render (request, 'my_app/address/list.html', {'addresses' : addresses})
 
 
